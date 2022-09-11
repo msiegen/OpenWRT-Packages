@@ -15,7 +15,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=2da7fb642e25d5af24cea293e109da551cb57895
-PKG_SOURCE_URL:=https://github.com/OnionIoT/fast-gpio.git
+PKG_SOURCE_URL:=https://github.com/msiegen/fast-gpio.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_RELEASE).tar.gz
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
@@ -28,7 +28,6 @@ define Package/$(PKG_NAME)
 	CATEGORY:=Onion
 	SUBMENU:=Utilities
 	TITLE:=Tool to enable GPIO access and software PWM support
-	DEPENDS:=+onion-sh-lib $(CXX_DEPENDS)
 endef
 
 define Build/Compile
@@ -47,9 +46,6 @@ endef
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/bin/$(PKG_NAME) $(1)/usr/sbin/
-	# copy script
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/scripts/expled.sh $(1)/usr/bin/expled
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
