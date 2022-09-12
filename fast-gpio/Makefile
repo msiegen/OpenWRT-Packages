@@ -28,6 +28,7 @@ define Package/$(PKG_NAME)
 	CATEGORY:=Onion
 	SUBMENU:=Utilities
 	TITLE:=Tool to enable GPIO access and software PWM support
+	DEPENDS:= $(CXX_DEPENDS)
 endef
 
 define Build/Compile
